@@ -156,7 +156,7 @@ contexts:
 
   function-calls:
     - meta_scope: meta.function.call
-    - match: '(array|split|blob|regexp|format|lstrip|rstrip|assert|cast2fi|casti2f|date|getroottable|swap2|swap4|swapfloat|time)\s*(?=\()'
+    - match: '(array|split|blob|regexp|format|lstrip|rstrip|assert|cast2fi|casti2f|date|(?:get|set)(?:root|const)table|swap2|swap4|swapfloat|time|getstackinfos|seterrorhandler|error|callee|newthread|suspend|wakeup|setdebughook|enabledebuginfo|compilestring|collectgarbage|type)\s*(?=\()'
       scope: support.function.squirrel
       push: start-parameters
     - match: '(?:::)?[^\d\W]\w*\s*(?=\()'
@@ -165,7 +165,7 @@ contexts:
 
   function-calls-member:
     - meta_scope: meta.function.call
-    - match: '(len|to(?:string|float|integer|char|lower|upper)|slice|find|raw(?:delete|get|in|set)|clear|append|push|extend|pop|op|insert|remove|resize|sort|reverse|map|apply|capture|match|search|(?:set|get)(?:delegate|attributes|root)|filter|reduce|weakref|keys|values|top|(?:p|a|pa|)call|bindenv|getinfos|(?:raw)?newmember|getstatus|wakeup(?:throw)?|getstackinfos)\s*(?=\()'
+    - match: '(len|to(?:string|float|integer|char|lower|upper)|slice|find|raw(?:delete|get|in|set)|clear|append|push|extend|pop|op|insert|remove|resize|sort|reverse|map|apply|capture|match|search|(?:set|get)(?:delegate|attributes|root|class|base)|filter|reduce|weakref|keys|values|top|(?:p|a|pa|)call|bindenv|getinfos|(?:raw)?newmember|getstatus|wakeup(?:throw)?|getinfos|constructor|instance)\s*(?=\()'
       scope: support.function.squirrel
       set: start-parameters
     - match: '[^\d\W]\w*\s*(?=\()'
