@@ -94,7 +94,7 @@ contexts:
   class-ends-or-extends:
     - match: '$|(?={)'
       pop: true
-    - match: \bextends\b
+    - match: \bextends(?=\b|\{)
       scope: storage.modifier.extends.squirrel
       push:
         - include: class-extends
