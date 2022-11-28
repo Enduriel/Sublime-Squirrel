@@ -2,8 +2,8 @@
 ---
 # Copyright 2021 Enduriel
 name: Squirrel
-version: 2
-comment: 'Squirrel Improved Syntax: version 3.1.0'
+version: 3
+comment: 'Squirrel Improved Syntax: version 3.3.1'
 file_extensions:
   - nut
 scope: source.nut
@@ -100,15 +100,15 @@ contexts:
         - include: class-extends
 
   class-extends:
-    - include: constants
     - match: '([^\d\W]+)\s*(?=::|\.)'
       scope: variable.other.member.squirrel
     - include: function-calls-member
-    - match: ::|\.
-      scope: punctuation.accessor.squirrel
-    - match: '\w+(?=\s*$|{)'
-      scope: entity.other.inherited-class.squirrel
+    - match: '(\B::)?(\w+)(?=\s*$|\s*{)'
+      captures:
+        1: variable.language.squirrel
+        2: entity.other.inherited-class.squirrel
       pop: true
+    - include: constants
 
   function-defs:
     - match: \bconstructor\s*(?=\()
