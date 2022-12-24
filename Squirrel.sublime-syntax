@@ -3,7 +3,7 @@
 # Copyright 2021 Enduriel
 name: Squirrel
 version: 3
-comment: 'Squirrel Improved Syntax: version 3.3.1'
+comment: 'Squirrel Improved Syntax: version 3.3.2'
 file_extensions:
   - nut
 scope: source.nut
@@ -238,16 +238,22 @@ contexts:
           captures:
             0: punctuation.definition.string.end.squirrel
           pop: true
-    - match: '@?"'
-      captures:
-        0: punctuation.definition.string.begin.squirrel
+    - match: '@"'
+      scope: punctuation.definition.string.begin.squirrel
       push:
-        - meta_scope: string.quoted.double.squirrel
-        - match: '"'
-          captures:
-            0: punctuation.definition.string.end.squirrel
-          pop: true
+        - meta_scope: 'string.quoted.double.squirrel'
+        - include: double-string-end
+    - match: '"'
+      scope: punctuation.definition.string.begin.squirrel
+      push:
+        - meta_scope: 'string.quoted.double.squirrel'
+        - include: double-string-end
         - include: string_escaped_char
+
+  double-string-end:
+    - match: '"'
+      scope: punctuation.definition.string.end.squirrel
+      pop: true
 
   maybe-member:
     - include: function-calls-member
