@@ -3,7 +3,7 @@
 # Copyright 2021 Enduriel
 name: Squirrel
 version: 3
-comment: 'Squirrel Improved Syntax: version 3.3.2'
+comment: 'Squirrel Improved Syntax: version 3.3.3'
 file_extensions:
   - nut
 scope: source.nut
