@@ -100,15 +100,15 @@ contexts:
         - include: class-extends
 
   class-extends:
+    - include: constants
     - match: '([^\d\W]+)\s*(?=::|\.)'
       scope: variable.other.member.squirrel
     - include: function-calls-member
-    - match: '(\B::)?(\w+)(?=\s*$|\s*{)'
-      captures:
-        1: variable.language.squirrel
-        2: entity.other.inherited-class.squirrel
+    - match: ::|\.
+      scope: punctuation.accessor.squirrel
+    - match: '\w+(?=\s*$|{)'
+      scope: entity.other.inherited-class.squirrel
       pop: true
-    - include: constants
 
   function-defs:
     - match: \bconstructor\s*(?=\()
