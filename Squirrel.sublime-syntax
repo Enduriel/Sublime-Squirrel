@@ -106,7 +106,7 @@ contexts:
     - include: function-calls-member
     - match: ::|\.
       scope: punctuation.accessor.squirrel
-    - match: '\w+(?=\s*$|{)'
+    - match: '\w+(?=\s*|{)'
       scope: entity.other.inherited-class.squirrel
       pop: true
 
